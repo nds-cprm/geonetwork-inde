@@ -1,0 +1,17 @@
+
+26/04/2020  agsb "alvaro barcellos <alvaro.barcellos@cprm.gov.br>"
+
+    pro:
+    
+    montado o docker-compose.yml para geonetwork, postgis e pgadmin
+    todos com passwords e usuarios default ***
+    todos com emails e admins defaults ***
+    
+    cons:
+    
+    a inicialização demora a pois o geonetwork nao aguarda corretamente 
+        a inicializacao completa do postgis
+
+    apos o startup devem ser mudados os perfis e as senhas de administradores     
+
+
