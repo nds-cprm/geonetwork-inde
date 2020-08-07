@@ -26,11 +26,13 @@ services:
         restart: unless-stopped
         stdin_open: true
         # tty: true
+        networks:
+            - internal_hosts
         labels:
             org.cprm.component: postgis-inde
             org.cprm.instance.name: geonetwork-inde
-        ports:
-            - 5500:5432
+            #        ports:
+            #- 5500:5432
         volumes:
             - dbdata:/var/lib/postgresql/data
             - dbbackups:/pg_backups
@@ -46,11 +48,13 @@ services:
         restart: unless-stopped
         stdin_open: true
         # tty: true
+        networks:
+            - internal_hosts
         labels:
             org.cprm.component: pgadmin-inde
             org.cprm.instance.name: geonetwork-inde
-        ports:
-            - 5050:5050
+            #ports:
+            #- 5050:5050
         volumes:
             - dbbackups:/pg_backups
             - pgadmindb:/var/lib/pgadmin
@@ -73,11 +77,13 @@ services:
         restart: unless-stopped
         stdin_open: true
         # tty: true
+        networks:
+            - internal_hosts
         labels:
             org.cprm.component: geonetwork-inde
             org.cprm.instance.name: geonetwork-inde
-        ports:
-            - 8080:8080
+            #ports:
+            #- 8080:8080
         volumes:
             - geonetwork_datadir:/var/lib/geonetwork/_data
         environment:
@@ -106,3 +112,7 @@ volumes:
     geonetwork_datadir:
         name: ${COMPOSE_PROJECT_NAME}_datadir
 
+networks:
+    default:
+    internal_hosts:
+        external: true
